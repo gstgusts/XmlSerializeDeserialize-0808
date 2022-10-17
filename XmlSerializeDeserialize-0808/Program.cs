@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Text.Json;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace XmlSerializeDeserialize_0808
@@ -36,7 +37,11 @@ namespace XmlSerializeDeserialize_0808
                 Console.WriteLine(note2.From);
             }
 
-            
+            string jsonString = JsonSerializer.Serialize(note);
+
+            var newNote = JsonSerializer.Deserialize<Note>(jsonString);
+
+            Console.WriteLine(newNote.From);
         }
     }
 }
